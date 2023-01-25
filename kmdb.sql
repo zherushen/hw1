@@ -101,7 +101,10 @@
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
-DROP TABLE IF EXISTS movies;
+DROP TABLE movies;
+DROP TABLE topcast;
+DROP TABLE studio;
+
 -- Create new tables, according to your domain model
 -- TODO!
 CREATE TABLE movies (
@@ -112,15 +115,96 @@ CREATE TABLE movies (
   studio TEXT
 );
 
+CREATE TABLE cast (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  actor_name TEXT,
+  character_name TEXT,
+  movie_id INTEGER
+);
+
+CREATE TABLE studio (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  studio_name TEXT,
+  movie_id INTEGER
+);
+
+
 
 SELECT * FROM movies;
--- Prints a header for the movies output
-.print "Movies"
-.print "======"
-.print ""
+
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
+INSERT INTO studio(
+  studio_name,
+  movie_id
+)
+VALUES(
+  "Warner Bros"
+  "1,2,3"
+)
+
+INSERT INTO cast(
+  actor_name,
+  character_name,
+  movie_id 
+)
+VALUES(
+  "Christian Bale",
+  "Bruce Wayne",
+  "1,2,3"
+),
+(
+  "Michael Caine",
+  "Alfred",
+  "1,2"
+),
+(
+  "Liam Neeson",
+  "Ra's Al Ghul",
+  "1"
+),
+(
+  "Katie Holmes",
+  "Rachel Dawes",
+  "1"
+),
+(
+  "Gary Oldman",
+  "Commissioner Gordon",
+  "1,3"
+),
+(
+  "Heath Ledger",
+  "Joker",
+  "2"
+),
+(
+  "Aaron Eckhart",
+  "Harvey Dent",
+  "2"
+),
+(
+  "Maggie Gyllenhaal",
+  "Rachel Dawes",
+  "2"
+),
+(
+  "Tom Hardy",
+  "Bane",
+  "3"
+),
+(
+  "Joseph Gordon-Levitt",
+  "John Blake",
+  "3"
+),
+(
+  "Anne Hathaway",
+  "Selina Kyle",
+  "3"
+);
+
 INSERT INTO movies(
   title,
   year_released,
@@ -146,7 +230,10 @@ VALUES (
   "Warner Bros."
 );
 
-SELECT * FROM movies;
+-- Prints a header for the movies output
+.print "Movies"
+.print "======"
+.print ""
 -- The SQL statement for the movies output
 -- TODO!
 

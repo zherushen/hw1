@@ -236,7 +236,7 @@ VALUES (
 .print ""
 -- The SQL statement for the movies output
 -- TODO!
-
+SELECT title, year_released, MPAA_rating, studio FROM movies;
 -- Prints a header for the cast output
 .print ""
 .print "Top Cast"

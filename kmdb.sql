@@ -141,8 +141,16 @@ INSERT INTO studio(
 )
 VALUES(
   "Warner Bros"
-  "1,2,3"
-)
+  "1"
+),
+(
+  "Warner Bros"
+  "2"
+),
+(
+  "Warner Bros"
+  "3"
+);
 
 INSERT INTO cast(
   actor_name,
@@ -152,12 +160,12 @@ INSERT INTO cast(
 VALUES(
   "Christian Bale",
   "Bruce Wayne",
-  "1,2,3"
+  "1"
 ),
 (
   "Michael Caine",
   "Alfred",
-  "1,2"
+  "1"
 ),
 (
   "Liam Neeson",
@@ -172,7 +180,12 @@ VALUES(
 (
   "Gary Oldman",
   "Commissioner Gordon",
-  "1,3"
+  "1"
+),
+(
+  "Christian Bale",
+  "Bruce Wayne",
+  "2"
 ),
 (
   "Heath Ledger",
@@ -185,9 +198,24 @@ VALUES(
   "2"
 ),
 (
+  "Michael Caine",
+  "Alfred",
+  "2"
+),
+(
   "Maggie Gyllenhaal",
   "Rachel Dawes",
   "2"
+),
+(
+  "Christian Bale",
+  "Bruce Wayne",
+  "3"
+),
+(
+  "Gary Oldman",
+  "Commissioner Gordon",
+  "3"
 ),
 (
   "Tom Hardy",
@@ -237,6 +265,7 @@ VALUES (
 -- The SQL statement for the movies output
 -- TODO!
 SELECT title, year_released, MPAA_rating, studio FROM movies;
+
 -- Prints a header for the cast output
 .print ""
 .print "Top Cast"
@@ -246,10 +275,5 @@ SELECT title, year_released, MPAA_rating, studio FROM movies;
 
 -- The SQL statement for the cast output
 -- TODO!
-CREATE TABLE cast (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  title TEXT,
-  year_released TEXT,
-  MPAA_rating TEXT,
-  studio TEXT
-);
+SELECT cast.actor_name, cast.character_name, movie.title 
+FROM cast INNER JOIN movie ON movie.id=cast.movie_id;
